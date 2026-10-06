@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Modernism Art — The Choose Collection</title>
+<meta name="description" content="Six original minimalist prints about the world we're living in — each with a spark of hope. Made to order, shipped to your door.">
+<style>
+  :root {
+    --cream: #f6f1e5;
+    --ink: #2b2b28;
+    --muted: #6b655a;
+    --teal: #2f6f6a;
+    --mustard: #d9a441;
+    --rust: #c96f2f;
+    --card: #fffdf8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  header {
+    text-align: center;
+    padding: 3.5rem 1.5rem 2rem;
+    border-bottom: 3px solid var(--ink);
+  }
+  header h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+  header h1 .accent { color: var(--rust); }
+  header p.tagline {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 34rem;
+    margin: 0 auto;
+  }
+  .intro {
+    max-width: 42rem;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+    font-size: 1.05rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem;
+  }
+  .card {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .card img.room {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    border-bottom: 2px solid var(--ink);
+  }
+  .card .body { padding: 1.25rem 1.25rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+  .card h2 { font-size: 1.35rem; margin-bottom: 0.3rem; }
+  .card .concept { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.8rem; flex: 1; }
+  .card .meta { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
+  .price { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+  .buy {
+    display: block;
+    text-align: center;
+    background: var(--teal);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 0.85rem;
+    border-radius: 4px;
+    border: 2px solid var(--ink);
+  }
+  .buy:hover { background: #265c57; }
+  .bundle {
+    max-width: 72rem;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+  }
+  .bundle-inner {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .bundle-inner h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .bundle-inner h2 .accent { color: var(--mustard); }
+  .bundle-inner p { max-width: 36rem; margin: 0 auto 1.25rem; color: #d8d2c2; }
+  .bundle-inner .price { color: var(--mustard); }
+  .bundle-inner .buy { background: var(--mustard); color: var(--ink); max-width: 22rem; margin: 0 auto; }
+  .bundle-inner .buy:hover { background: #c08f36; }
+  .how {
+    max-width: 56rem;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+  }
+  .how h2 { text-align: center; margin-bottom: 1.5rem; font-size: 1.6rem; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+  .step {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    padding: 1.25rem;
+  }
+  .step .n {
+    display: inline-block;
+    background: var(--rust);
+    color: #fff;
+    width: 2rem; height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-top: 3px solid var(--ink);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  footer a { color: var(--teal); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Retro <span class="accent">Modernism</span> Art</h1>
+  <p class="tagline">Choose hope. Six original prints for the world we're living in.</p>
+</header>
+
+<p class="intro">
+  The <strong>Choose Collection</strong> is six minimalist low-poly pieces about modern life —
+  the scroll, the grind, the noise — each with a small spark of hope hidden inside.
+  Every print is made to order and shipped straight to your door.
+</p>
+
+<main class="grid">
+
+  <article class="card">
+    <img class="room" src="images/mockup-choose-connection.jpg" alt="Choose Connection print in a living room">
+    <div class="body">
+      <h2>Choose Connection</h2>
+      <p class="concept">A crowded room full of people staring at their phones — and two figures at the center, holding hands, choosing each other instead.</p>
+      <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
+      <p class="price">$34.99</p>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Connection — 24x16" -->
+      <a class="buy" href="STRIPE_LINK_CHOOSE_CONNECTION">Buy now</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <img class="room" src="images/mockup-choose-presence.jpg" alt="Choose Presence print in a living room">
+    <div class="body">
+      <h2>Choose Presence</h2>
+      <p class="concept">A grid of identical cells, every figure hunched over a glowing screen, burning out in perfect synchronization.</p>
+      <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
+      <p class="price">$34.99</p>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Presence — 24x16" -->
+      <a class="buy" href="STRIPE_LINK_CHOOSE_PRESENCE">Buy now</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <img class="room" src="images/mockup-choose-creativity.jpg" alt="Choose Creativity print in a living room">
+    <div class="body">
+      <h2>Choose Creativity</h2>
+      <p class="concept">An endless loop of grey figures marching a conveyor belt that goes nowhere — the daily grind, rendered literally.</p>
+      <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
+      <p class="price">$34.99</p>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Creativity — 24x16" -->
+      <a class="buy" href="STRIPE_LINK_CHOOSE_CREATIVITY">Buy now</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <img class="room" src="images/mockup-choose-humility.jpg" alt="Choose Humility print in a living room">
+    <div class="body">
+      <h2>Choose Humility</h2>
+      <p class="concept">Five figures in tribal red, blue, and green shout past each other while a grey overseer watches. The discourse, in one image.</p>
+      <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
+      <p class="price">$34.99</p>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Humility — 24x16" -->
+      <a class="buy" href="STRIPE_LINK_CHOOSE_HUMILITY">Buy now</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <img class="room" src="images/mockup-choose-nature.jpg" alt="Choose Nature print in a living room">
+    <div class="body">
+      <h2>Choose Nature</h2>
+      <p class="concept">Amid the concrete sprawl, one small figure kneels to tend a single flower breaking through the cracks.</p>
+      <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
+      <p class="price">$34.99</p>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Nature — 24x16" -->
+      <a class="buy" href="STRIPE_LINK_CHOOSE_NATURE">Buy now</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <img class="room" src="images/mockup-choose-real.jpg" alt="Choose Real print in a living room">
+    <div class="body">
+      <h2>Choose Real</h2>
+      <p class="concept">Three dispenser brands — red, blue, yellow — all fed by the same hopper, all outputting the identical grey product. One figure walks away, toward a real orchard.</p>
+      <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
+      <p class="price">$34.99</p>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Real — 24x16" -->
+      <a class="buy" href="STRIPE_LINK_CHOOSE_REAL">Buy now</a>
+    </div>
+  </article>
+
+</main>
+
+<section class="bundle">
+  <div class="bundle-inner">
+    <h2>The <span class="accent">Choose Collection</span> — All 6 Prints</h2>
+    <p>Every piece in the collection, one bundle. Six 24&Prime; &times; 16&Prime; matte posters, made to order and shipped together.</p>
+    <p class="price">$189.99</p>
+    <!-- TODO: replace href with the Stripe payment link for "The Choose Collection — All 6 Prints Bundle" -->
+    <a class="buy" href="STRIPE_LINK_BUNDLE">Buy the bundle</a>
+  </div>
+</section>
+
+<section class="how">
+  <h2>How ordering works</h2>
+  <div class="steps">
+    <div class="step">
+      <span class="n">1</span>
+      <p><strong>Pick your piece.</strong> Choose the print (or the full bundle) that finds you.</p>
+    </div>
+    <div class="step">
+      <span class="n">2</span>
+      <p><strong>Check out securely.</strong> Payment is handled by Stripe — no account needed.</p>
+    </div>
+    <div class="step">
+      <span class="n">3</span>
+      <p><strong>Made to order.</strong> Your poster is printed fresh and shipped to your door. Please allow up to 15 days for production and delivery.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <!-- TODO: replace with the gallery's contact email -->
+  <p>Questions? <a href="mailto:hello@example.com">Get in touch</a>.</p>
+  <p>&copy; 2026 Retro Modernism Art. All pieces original.</p>
+</footer>
+
+</body>
+</html>
