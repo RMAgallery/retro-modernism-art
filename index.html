@@ -203,6 +203,47 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
     font-weight: 700;
     margin-bottom: 0.6rem;
   }
+  .premier {
+    max-width: 42rem;
+    margin: 0 auto 3rem;
+    padding: 2rem 1.5rem;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .premier h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .premier h2 .accent { color: var(--mustard); }
+  .premier p { color: #d8d2c2; margin-bottom: 1.25rem; }
+  .premier form { display: flex; gap: 0.5rem; max-width: 28rem; margin: 0 auto; }
+  .premier input[type=email] {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--mustard);
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #fff;
+  }
+  .premier button {
+    padding: 0.75rem 1.5rem;
+    background: var(--mustard);
+    color: var(--ink);
+    border: 2px solid var(--mustard);
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .premier button:hover { background: #c08f36; }
+  .premier .code-reveal {
+    display: none;
+    margin-top: 1.25rem;
+    padding: 1rem;
+    background: rgba(217,164,65,0.15);
+    border: 2px dashed var(--mustard);
+    border-radius: 6px;
+  }
+  .premier .code-reveal strong { color: var(--mustard); font-size: 1.3rem; letter-spacing: 0.1em; }
   footer {
     text-align: center;
     padding: 2.5rem 1.5rem;
@@ -220,6 +261,20 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
   <p class="tagline">Choose hope. Six original prints for the world we're living in.</p>
   <nav><a href="about.html">About</a></nav>
 </header>
+
+<section class="premier">
+  <h2>Join <span class="accent">RMA Premier</span></h2>
+  <p>Be the first to know about new art drops, secret offers, and unreleased pieces. Plus, members get all <strong>6 Choose postcards FREE</strong> with any print purchase.</p>
+  <form id="premier-form">
+    <input type="email" id="premier-email" placeholder="your@email.com" required aria-label="Email address">
+    <button type="submit">Join</button>
+  </form>
+  <div class="code-reveal" id="code-reveal">
+    <p>Welcome to RMA Premier! Your code:</p>
+    <strong>PREMIER6</strong>
+    <p style="margin-top:0.5rem; font-size:0.9rem;">Enter this code at checkout to get all 6 postcards free with any print.</p>
+  </div>
+</section>
 
 <p class="intro">
   The <strong>Choose Collection</strong> is six minimalist low-poly pieces about modern life —
@@ -418,6 +473,21 @@ document.querySelectorAll('.card .carousel').forEach(function(car){
     if (Math.abs(dx) > 30) go(i + (dx < 0 ? 1 : -1));
     x0 = null;
   }, {passive: true});
+});
+</script>
+<script>
+// RMA Premier signup — collect email via FormSubmit, then reveal the postcard code
+document.getElementById('premier-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var email = document.getElementById('premier-email').value;
+  if (!email || email.indexOf('@') < 0) return;
+  fetch('https://formsubmit.co/ajax/retromodernismart@gmail.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ email: email, _subject: 'New RMA Premier signup', _template: 'table' })
+  }).catch(function(){ /* still reveal code even if submit fails */ });
+  document.getElementById('code-reveal').style.display = 'block';
+  document.getElementById('premier-form').style.display = 'none';
 });
 </script>
 <script>
