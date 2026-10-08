@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Offer — Retro Modernism Art</title>
+<meta name="description" content="A secret offer just for you.">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --cream: #f3ecdd;
+    --card: #faf6ec;
+    --rust: #b5542d;
+    --teal: #2d6e6a;
+    --mustard: #d9a441;
+    --muted: #6b6257;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+  .offer-box {
+    max-width: 36rem;
+    background: var(--card);
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+  .secret-badge {
+    display: inline-block;
+    background: var(--rust);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+  }
+  h1 { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  h1 .accent { color: var(--rust); }
+  .your-pick {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+  }
+  .mug-offer {
+    border: 2px dashed var(--ink);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.75rem;
+    background: #fff;
+  }
+  .mug-offer img {
+    max-width: 180px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .mug-offer h2 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+  .mug-offer .unreleased {
+    display: inline-block;
+    background: var(--mustard);
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+  }
+  .mug-offer p { color: var(--muted); margin-bottom: 0.75rem; }
+  .mug-offer .price-line { font-size: 1.3rem; font-weight: 700; }
+  .mug-offer .price-line s { color: var(--muted); font-weight: 400; margin-right: 0.5rem; }
+  .mug-offer .price-line .deal { color: var(--rust); }
+  .buttons { display: flex; flex-direction: column; gap: 0.85rem; }
+  .btn-yes {
+    display: block;
+    background: var(--teal);
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    border: 2px solid var(--ink);
+  }
+  .btn-yes:hover { background: #245a56; }
+  .btn-no {
+    display: block;
+    color: var(--muted);
+    text-decoration: underline;
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+  .fine { margin-top: 1.5rem; font-size: 0.8rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="offer-box">
+  <span class="secret-badge">Secret Offer</span>
+  <h1>Wait — <span class="accent">one more thing.</span></h1>
+  <p class="your-pick" id="your-pick">Your print is reserved and ready.</p>
+
+  <div class="mug-offer">
+    <span class="unreleased">Unreleased Product</span>
+    <h2>The Choose Presence Mug</h2>
+    <img src="images/mug-choose-presence.jpg" alt="Choose Presence black ceramic mug">
+    <p>This 11oz black ceramic mug isn't on our site yet. You're seeing it here first — because you made it to checkout.</p>
+    <p class="price-line"><s>$29.99</s> <span class="deal">$15.00</span> — 50% off, right now only</p>
+  </div>
+
+  <div class="buttons">
+    <a class="btn-yes" id="btn-yes" href="#">Yes, add the mug to my order</a>
+    <a class="btn-no" id="btn-no" href="#">No thanks, just the art →</a>
+  </div>
+
+  <p class="fine">This offer disappears once you leave this page. Made to order — please allow up to 15 days for production and delivery.</p>
+</div>
+
+<script>
+// Map artwork+size to Stripe payment links.
+// BUNDLE_LINKS and ART_LINKS are filled in at build time.
+var BUNDLE_LINKS = {
+  "connection-18x12": "https://buy.stripe.com/4gMeVf0JnboM3Cv61A5Ne0w",
+  "connection-24x16": "https://buy.stripe.com/00w8wR4ZD2Sg1un61A5Ne0B",
+  "connection-30x20": "https://buy.stripe.com/9B6cN71Nr0K88WP89I5Ne0v",
+  "presence-18x12": "https://buy.stripe.com/aFa6oJ9fTfF28WPblU5Ne0u",
+  "presence-24x16": "https://buy.stripe.com/5kQaEZdw9akI6OH75E5Ne0A",
+  "presence-30x20": "https://buy.stripe.com/fZucN7dw90K82yrey65Ne0t",
+  "creativity-18x12": "https://buy.stripe.com/cNibJ3cs578wgph1Lk5Ne0s",
+  "creativity-24x16": "https://buy.stripe.com/fZu28t4ZDboM5KD4Xw5Ne0z",
+  "creativity-30x20": "https://buy.stripe.com/8x2fZjcs50K8c912Po5Ne0r",
+  "humility-18x12": "https://buy.stripe.com/eVq3cx2Rv0K8b4X75E5Ne0q",
+  "humility-24x16": "https://buy.stripe.com/eVq5kF0Jn0K8eh9fCa5Ne0y",
+  "humility-30x20": "https://buy.stripe.com/3cIfZj3Vz50o2yr61A5Ne0p",
+  "nature-18x12": "https://buy.stripe.com/aFadRb77LboMeh9du25Ne0o",
+  "nature-24x16": "https://buy.stripe.com/14A6oJfEh50o6OHdu25Ne0x",
+  "nature-30x20": "https://buy.stripe.com/8x2dRbcs58cA3Cvey65Ne0m",
+  "real-18x12": "https://buy.stripe.com/6oUdRb9fTeAY5KD75E5Ne0l",
+  "real-24x16": "https://buy.stripe.com/7sY14pdw9gJ6gph9dM5Ne0n",
+  "real-30x20": "https://buy.stripe.com/00w9AVgIldwUdd589I5Ne0k",
+};
+var ART_LINKS = {
+  "connection-24x16": "https://buy.stripe.com/bJe5kF4ZDdwU7SL9dM5Ne00",
+  "presence-24x16": "https://buy.stripe.com/9B63cx9fT1Oc4Gz61A5Ne01",
+  "creativity-24x16": "https://buy.stripe.com/14AbJ34ZDakIdd5blU5Ne02",
+  "humility-24x16": "https://buy.stripe.com/9B63cx77L2Sgdd5fCa5Ne03",
+  "nature-24x16": "https://buy.stripe.com/8x214p8bP8cAgphfCa5Ne04",
+  "real-24x16": "https://buy.stripe.com/aFa14pfEh8cA1unfCa5Ne05",
+};
+
+var params = new URLSearchParams(window.location.search);
+var art = params.get('art') || 'connection';
+var size = params.get('size') || '24x16';
+var key = art + '-' + size;
+
+var names = {
+  connection: 'Choose Connection',
+  presence: 'Choose Presence',
+  creativity: 'Choose Creativity',
+  humility: 'Choose Humility',
+  nature: 'Choose Nature',
+  real: 'Choose Real'
+};
+document.getElementById('your-pick').textContent =
+  'Your ' + (names[art] || art) + ' (' + size + ' matte poster) is reserved and ready.';
+
+document.getElementById('btn-yes').href = BUNDLE_LINKS[key] || '#';
+document.getElementById('btn-no').href = ART_LINKS[key] || '#';
+</script>
+</body>
+</html>
