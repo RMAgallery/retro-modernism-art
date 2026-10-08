@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Retro Modernism Art — The Choose Collection</title>
-  <meta name="description" content="Six original minimalist prints about the world we're living in — each with a spark of hope. Made to order, shipped to your door.">
-  <!-- Meta Pixel Code -->
+<meta name="description" content="Six original minimalist prints about the world we're living in — each with a spark of hope. Made to order, shipped to your door.">
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -79,20 +79,59 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
     display: flex;
     flex-direction: column;
   }
-  .card img.room {
+  .card .carousel {
+    position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
-    object-fit: cover;
-    display: block;
+    overflow: hidden;
     border-bottom: 2px solid var(--ink);
-  }.buy:hover { background: #265c57; }
-  .topnav { margin-top: 0.6rem; }
-  .topnav a {
-    color: var(--teal);
-    font-weight: 700;
-    text-decoration: none;
-    border-bottom: 2px solid var(--teal);
   }
+  .card .slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.35s ease;
+  }
+  .card .slides img {
+    min-width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .card .slides img.room { object-fit: cover; }
+  .card .slides img.art { object-fit: contain; background: #f3ecdd; }
+  .card .carousel button.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    background: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+  }
+  .card .carousel button.prev { left: 0.5rem; }
+  .card .carousel button.next { right: 0.5rem; }
+  .card .carousel .dots {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.4rem;
+  }
+  .card .carousel .dots button {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    border: 1px solid var(--ink);
+    background: rgba(255,255,255,0.6);
+    cursor: pointer;
+    padding: 0;
+  }
+  .card .carousel .dots button.active { background: var(--ink); }
   .card .body { padding: 1.25rem 1.25rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
   .card h2 { font-size: 1.35rem; margin-bottom: 0.3rem; }
   .card .concept { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.8rem; flex: 1; }
@@ -110,19 +149,7 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
     border-radius: 4px;
     border: 2px solid var(--ink);
   }
-  
-  .size-select {
-    display: block;
-    width: 100%;
-    margin-bottom: 1rem;
-    padding: 0.7rem;
-    font-family: inherit;
-    font-size: 1rem;
-    background: var(--card);
-    color: var(--ink);
-    border: 2px solid var(--ink);
-    border-radius: 4px;
-  }
+  .buy:hover { background: #265c57; }
   .bundle {
     max-width: 72rem;
     margin: 0 auto 3rem;
@@ -141,8 +168,6 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
   .bundle-inner .price { color: var(--mustard); }
   .bundle-inner .buy { background: var(--mustard); color: var(--ink); max-width: 22rem; margin: 0 auto; }
   .bundle-inner .buy:hover { background: #c08f36; }
-
-  
   .how {
     max-width: 56rem;
     margin: 0 auto 3rem;
@@ -181,8 +206,7 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
 
 <header>
   <h1>Retro <span class="accent">Modernism</span> Art</h1>
-  <p class="tagline">Choose hope. Six original prints for the world we're living in.</p> <nav class="topnav"><a href="about.html">About us</a></nav>
-  
+  <p class="tagline">Choose hope. Six original prints for the world we're living in.</p>
 </header>
 
 <p class="intro">
@@ -194,97 +218,121 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
 <main class="grid">
 
   <article class="card">
-    <img class="room" src="images/mockup-choose-connection.jpg" alt="Choose Connection print in a living room">
+    <div class="carousel">
+      <div class="slides">
+        <img class="room" src="images/mockup-choose-connection.jpg" alt="Choose Connection print in a living room">
+        <img class="art" src="images/art-choose-connection.jpg" alt="Choose Connection artwork">
+      </div>
+      <button class="nav prev" aria-label="Previous image">&#8249;</button>
+      <button class="nav next" aria-label="Next image">&#8250;</button>
+      <div class="dots"><button class="active" aria-label="Show room view"></button><button aria-label="Show artwork only"></button></div>
+    </div>
     <div class="body">
       <h2>Choose Connection</h2>
       <p class="concept">A crowded room full of people staring at their phones — and two figures at the center, holding hands, choosing each other instead.</p>
       <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
       <p class="price">$34.99</p>
-            <select class="size-select" aria-label="Choose a size">
-        <option value="https://buy.stripe.com/8x2dRbajX9gEa0T9dM5Ne08" data-price="$24.99" data-meta="18&Prime; &times; 12&Prime;">18&Prime; &times; 12&Prime; — $24.99</option>
-        <option value="https://buy.stripe.com/bJe5kF4ZDdwU7SL9dM5Ne00" data-price="$34.99" data-meta="24&Prime; &times; 16&Prime;" selected>24&Prime; &times; 16&Prime; — $34.99</option>
-        <option value="https://buy.stripe.com/fZu9AV8bP64s2yrcpY5Ne09" data-price="$49.99" data-meta="30&Prime; &times; 20&Prime;">30&Prime; &times; 20&Prime; — $49.99</option>
-      </select>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Connection — 24x16" -->
       <a class="buy" href="https://buy.stripe.com/bJe5kF4ZDdwU7SL9dM5Ne00">Buy now</a>
     </div>
   </article>
 
   <article class="card">
-    <img class="room" src="images/mockup-choose-presence.jpg" alt="Choose Presence print in a living room">
+    <div class="carousel">
+      <div class="slides">
+        <img class="room" src="images/mockup-choose-presence.jpg" alt="Choose Presence print in a living room">
+        <img class="art" src="images/art-choose-presence.webp" alt="Choose Presence artwork">
+      </div>
+      <button class="nav prev" aria-label="Previous image">&#8249;</button>
+      <button class="nav next" aria-label="Next image">&#8250;</button>
+      <div class="dots"><button class="active" aria-label="Show room view"></button><button aria-label="Show artwork only"></button></div>
+    </div>
     <div class="body">
       <h2>Choose Presence</h2>
       <p class="concept">A grid of identical cells, every figure hunched over a glowing screen, burning out in perfect synchronization.</p>
       <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
       <p class="price">$34.99</p>
-            <select class="size-select" aria-label="Choose a size">
-        <option value="https://buy.stripe.com/fZu9AVcs53Wk2yr3Ts5Ne0a" data-price="$24.99" data-meta="18&Prime; &times; 12&Prime;">18&Prime; &times; 12&Prime; — $24.99</option>
-        <option value="https://buy.stripe.com/9B63cx9fT1Oc4Gz61A5Ne01" data-price="$34.99" data-meta="24&Prime; &times; 16&Prime;" selected>24&Prime; &times; 16&Prime; — $34.99</option>
-        <option value="https://buy.stripe.com/9B6fZj63HboM1unblU5Ne0b" data-price="$49.99" data-meta="30&Prime; &times; 20&Prime;">30&Prime; &times; 20&Prime; — $49.99</option>
-      </select>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Presence — 24x16" -->
       <a class="buy" href="https://buy.stripe.com/9B63cx9fT1Oc4Gz61A5Ne01">Buy now</a>
     </div>
   </article>
 
   <article class="card">
-    <img class="room" src="images/mockup-choose-creativity.jpg" alt="Choose Creativity print in a living room">
+    <div class="carousel">
+      <div class="slides">
+        <img class="room" src="images/mockup-choose-creativity.jpg" alt="Choose Creativity print in a living room">
+        <img class="art" src="images/art-choose-creativity.webp" alt="Choose Creativity artwork">
+      </div>
+      <button class="nav prev" aria-label="Previous image">&#8249;</button>
+      <button class="nav next" aria-label="Next image">&#8250;</button>
+      <div class="dots"><button class="active" aria-label="Show room view"></button><button aria-label="Show artwork only"></button></div>
+    </div>
     <div class="body">
       <h2>Choose Creativity</h2>
       <p class="concept">An endless loop of grey figures marching a conveyor belt that goes nowhere — the daily grind, rendered literally.</p>
       <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
       <p class="price">$34.99</p>
-            <select class="size-select" aria-label="Choose a size">
-        <option value="https://buy.stripe.com/00w28t3VzcsQ1un1Lk5Ne0c" data-price="$24.99" data-meta="18&Prime; &times; 12&Prime;">18&Prime; &times; 12&Prime; — $24.99</option>
-        <option value="https://buy.stripe.com/14AbJ34ZDakIdd5blU5Ne02" data-price="$34.99" data-meta="24&Prime; &times; 16&Prime;" selected>24&Prime; &times; 16&Prime; — $34.99</option>
-        <option value="https://buy.stripe.com/7sYaEZ4ZDboM7SLfCa5Ne0d" data-price="$49.99" data-meta="30&Prime; &times; 20&Prime;">30&Prime; &times; 20&Prime; — $49.99</option>
-      </select>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Creativity — 24x16" -->
       <a class="buy" href="https://buy.stripe.com/14AbJ34ZDakIdd5blU5Ne02">Buy now</a>
     </div>
   </article>
 
   <article class="card">
-    <img class="room" src="images/mockup-choose-humility.jpg" alt="Choose Humility print in a living room">
+    <div class="carousel">
+      <div class="slides">
+        <img class="room" src="images/mockup-choose-humility.jpg" alt="Choose Humility print in a living room">
+        <img class="art" src="images/art-choose-humility.webp" alt="Choose Humility artwork">
+      </div>
+      <button class="nav prev" aria-label="Previous image">&#8249;</button>
+      <button class="nav next" aria-label="Next image">&#8250;</button>
+      <div class="dots"><button class="active" aria-label="Show room view"></button><button aria-label="Show artwork only"></button></div>
+    </div>
     <div class="body">
       <h2>Choose Humility</h2>
       <p class="concept">Five figures in tribal red, blue, and green shout past each other while a grey overseer watches. The discourse, in one image.</p>
       <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
       <p class="price">$34.99</p>
-            <select class="size-select" aria-label="Choose a size">
-        <option value="https://buy.stripe.com/28E4gB8bPeAY7SLgGe5Ne0e" data-price="$24.99" data-meta="18&Prime; &times; 12&Prime;">18&Prime; &times; 12&Prime; — $24.99</option>
-        <option value="https://buy.stripe.com/9B63cx77L2Sgdd5fCa5Ne03" data-price="$34.99" data-meta="24&Prime; &times; 16&Prime;" selected>24&Prime; &times; 16&Prime; — $34.99</option>
-        <option value="https://buy.stripe.com/3cIfZj9fTfF25KDcpY5Ne0f" data-price="$49.99" data-meta="30&Prime; &times; 20&Prime;">30&Prime; &times; 20&Prime; — $49.99</option>
-      </select>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Humility — 24x16" -->
       <a class="buy" href="https://buy.stripe.com/9B63cx77L2Sgdd5fCa5Ne03">Buy now</a>
     </div>
   </article>
 
   <article class="card">
-    <img class="room" src="images/mockup-choose-nature.jpg" alt="Choose Nature print in a living room">
+    <div class="carousel">
+      <div class="slides">
+        <img class="room" src="images/mockup-choose-nature.jpg" alt="Choose Nature print in a living room">
+        <img class="art" src="images/art-choose-nature.webp" alt="Choose Nature artwork">
+      </div>
+      <button class="nav prev" aria-label="Previous image">&#8249;</button>
+      <button class="nav next" aria-label="Next image">&#8250;</button>
+      <div class="dots"><button class="active" aria-label="Show room view"></button><button aria-label="Show artwork only"></button></div>
+    </div>
     <div class="body">
       <h2>Choose Nature</h2>
       <p class="concept">Amid the concrete sprawl, one small figure kneels to tend a single flower breaking through the cracks.</p>
       <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
       <p class="price">$34.99</p>
-            <select class="size-select" aria-label="Choose a size">
-        <option value="https://buy.stripe.com/4gM00l4ZDboM2yrahQ5Ne0g" data-price="$24.99" data-meta="18&Prime; &times; 12&Prime;">18&Prime; &times; 12&Prime; — $24.99</option>
-        <option value="https://buy.stripe.com/8x214p8bP8cAgphfCa5Ne04" data-price="$34.99" data-meta="24&Prime; &times; 16&Prime;" selected>24&Prime; &times; 16&Prime; — $34.99</option>
-        <option value="https://buy.stripe.com/3cI28t9fT1Oc5KDblU5Ne0h" data-price="$49.99" data-meta="30&Prime; &times; 20&Prime;">30&Prime; &times; 20&Prime; — $49.99</option>
-      </select>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Nature — 24x16" -->
       <a class="buy" href="https://buy.stripe.com/8x214p8bP8cAgphfCa5Ne04">Buy now</a>
     </div>
   </article>
 
   <article class="card">
-    <img class="room" src="images/mockup-choose-real.jpg" alt="Choose Real print in a living room">
+    <div class="carousel">
+      <div class="slides">
+        <img class="room" src="images/mockup-choose-real.jpg" alt="Choose Real print in a living room">
+        <img class="art" src="images/art-choose-real.webp" alt="Choose Real artwork">
+      </div>
+      <button class="nav prev" aria-label="Previous image">&#8249;</button>
+      <button class="nav next" aria-label="Next image">&#8250;</button>
+      <div class="dots"><button class="active" aria-label="Show room view"></button><button aria-label="Show artwork only"></button></div>
+    </div>
     <div class="body">
       <h2>Choose Real</h2>
       <p class="concept">Three dispenser brands — red, blue, yellow — all fed by the same hopper, all outputting the identical grey product. One figure walks away, toward a real orchard.</p>
       <p class="meta">24&Prime; &times; 16&Prime; matte poster &middot; unframed</p>
       <p class="price">$34.99</p>
-            <select class="size-select" aria-label="Choose a size">
-        <option value="https://buy.stripe.com/3cI9AV1Nr9gE4GzfCa5Ne0i" data-price="$24.99" data-meta="18&Prime; &times; 12&Prime;">18&Prime; &times; 12&Prime; — $24.99</option>
-        <option value="https://buy.stripe.com/aFa14pfEh8cA1unfCa5Ne05" data-price="$34.99" data-meta="24&Prime; &times; 16&Prime;" selected>24&Prime; &times; 16&Prime; — $34.99</option>
-        <option value="https://buy.stripe.com/14A4gB8bPfF23Cvdu25Ne0j" data-price="$49.99" data-meta="30&Prime; &times; 20&Prime;">30&Prime; &times; 20&Prime; — $49.99</option>
-      </select>
+      <!-- TODO: replace href with the Stripe payment link for "Choose Real — 24x16" -->
       <a class="buy" href="https://buy.stripe.com/aFa14pfEh8cA1unfCa5Ne05">Buy now</a>
     </div>
   </article>
@@ -298,16 +346,6 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
     <p class="price">$189.99</p>
     <!-- TODO: replace href with the Stripe payment link for "The Choose Collection — All 6 Prints Bundle" -->
     <a class="buy" href="https://buy.stripe.com/28E8wRdw98cAc910Hg5Ne06">Buy the bundle</a>
-    </div>
-</section>
-
-<section class="bundle">
-  <div class="bundle-inner">
-    <h2>The <span class="accent">Full Stay Collection</span> — Walls Done in One Order</h2>
-    <p>Six pieces. One apartment. Zero decision fatigue. A complete wall-art set made for short-term rentals: one 30&Prime; &times; 20&Prime; statement piece for the living room, two 24&Prime; &times; 16&Prime; prints for the bedrooms, and three 18&Prime; &times; 12&Prime; prints for the hallway, bathroom, and reading nook. Every piece from the Choose collection shares one visual language, so every room feels intentional and every listing photo looks pulled together.</p>
-    <p>Made to order and shipped together in one box — please allow up to 15 days for production and delivery. Unframed; all sizes fit standard IKEA Ribba frames. Furnishing multiple units? Ask about volume pricing — get in touch below.</p>
-    <p class="price">$169 <span style="font-size: 1rem; font-weight: 400; color: #d8d2c2; text-decoration: line-through;">$194.94 separately</span></p>
-    <a class="buy" href="https://buy.stripe.com/9B6fZjgIl8cA7SLblU5Ne07">Buy the Full Stay Collection</a>
   </div>
 </section>
 
@@ -330,30 +368,40 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
 </section>
 
 <footer>
-  
-  <p>Questions? <a href="mailto:retromodernismart@gmail.com">Get in touch</a>. <a href="about.html">About us</a>.</p>
+  <!-- TODO: replace with the gallery's contact email -->
+  <p>Questions? <a href="mailto:hello@example.com">Get in touch</a>.</p>
   <p>&copy; 2026 Retro Modernism Art. All pieces original.</p>
 </footer>
 
 <script>
+// Card image carousels: room mockup <-> artwork only
+document.querySelectorAll('.card .carousel').forEach(function(car){
+  var slides = car.querySelector('.slides');
+  var dots = car.querySelectorAll('.dots button');
+  var i = 0, n = dots.length;
+  function go(k){
+    i = (k + n) % n;
+    slides.style.transform = 'translateX(' + (-100 * i) + '%)';
+    dots.forEach(function(d, j){ d.classList.toggle('active', j === i); });
+  }
+  car.querySelector('.prev').addEventListener('click', function(){ go(i - 1); });
+  car.querySelector('.next').addEventListener('click', function(){ go(i + 1); });
+  dots.forEach(function(d, j){ d.addEventListener('click', function(){ go(j); }); });
+  // swipe support
+  var x0 = null;
+  car.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive: true});
+  car.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 30) go(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  }, {passive: true});
+});
+</script>
+<script>
 // Track buy-button clicks as InitiateCheckout for the Meta Pixel
 document.querySelectorAll('a.buy').forEach(function(a){
   a.addEventListener('click', function(){ if (window.fbq) fbq('track', 'InitiateCheckout'); });
-});
-</script>
-
-<script>
-document.querySelectorAll('.size-select').forEach(function(sel){
-  sel.addEventListener('change', function(){
-    var opt = sel.selectedOptions[0];
-    var card = sel.closest('.card');
-    var buy = card.querySelector('a.buy');
-    var price = card.querySelector('.price');
-    var meta = card.querySelector('.meta');
-    if (buy) buy.href = sel.value;
-    if (price) price.textContent = opt.dataset.price;
-    if (meta) meta.innerHTML = opt.dataset.meta + ' matte poster &middot; unframed';
-  });
 });
 </script>
 </body>
