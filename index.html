@@ -79,6 +79,176 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
       radial-gradient(800px 600px at 50% 100%, rgba(29, 122, 110, 0.07), transparent 60%);
   }
 
+  /* ---- hero ---- */
+  .hero {
+    position: relative;
+    height: 92vh;
+    min-height: 560px;
+    max-height: 900px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-slides {
+    position: absolute;
+    inset: 0;
+  }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+    transform: scale(1);
+  }
+  .hero-slide.active {
+    opacity: 1;
+    animation: kenburns 7s ease-out forwards;
+  }
+  @keyframes kenburns {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(20,28,24,0.42) 0%, rgba(20,28,24,0.18) 40%, rgba(20,28,24,0.52) 100%);
+  }
+  .hero-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(250, 246, 236, 0.1);
+    backdrop-filter: blur(22px) saturate(1.3);
+    -webkit-backdrop-filter: blur(22px) saturate(1.3);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 28px;
+    padding: 3rem 3.5rem;
+    max-width: 40rem;
+    width: calc(100% - 3rem);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  }
+  .hero-card .eyebrow {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+  }
+  .hero-card h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 0.9rem;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+  }
+  .hero-card h1 .accent {
+    background: linear-gradient(100deg, var(--mustard-soft) 10%, var(--mustard) 55%, var(--leaf-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-card .tagline {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 1.8rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .hero-btn {
+    display: inline-block;
+    background: linear-gradient(100deg, var(--mustard), #dd9430);
+    color: #1e2a24;
+    font-weight: 700;
+    font-size: 1.02rem;
+    text-decoration: none;
+    padding: 0.9rem 2.2rem;
+    border-radius: 99px;
+    box-shadow: 0 6px 24px rgba(232,169,61,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(232,169,61,0.55);
+  }
+  .hero-link {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(255,255,255,0.4);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+  }
+  .hero-link:hover { color: #fff; border-color: #fff; }
+  .hero-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.6rem;
+    z-index: 2;
+  }
+  .hero-dots button {
+    width: 2.2rem;
+    height: 0.3rem;
+    border-radius: 99px;
+    border: none;
+    background: rgba(255,255,255,0.35);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s;
+  }
+  .hero-dots button.active { background: #fff; }
+  .hero-caption {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    z-index: 2;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(8px);
+    padding: 0.4rem 0.9rem;
+    border-radius: 99px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 2;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .scroll-hint::after {
+    content: "";
+    width: 1px;
+    height: 2.4rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.7), transparent);
+    animation: dropline 2s ease-in-out infinite;
+  }
+  @keyframes dropline {
+    0%, 100% { transform: scaleY(0.6); transform-origin: top; opacity: 0.5; }
+    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  }
+
   /* ---- header / hero ---- */
   header {
     text-align: center;
@@ -541,17 +711,39 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
     .premier form { flex-direction: column; }
     .bundle-inner { padding: 2.25rem 1.5rem; }
     header { padding: 3rem 1.25rem 2.25rem; }
+    .hero { height: 88vh; min-height: 520px; }
+    .hero-card { padding: 2rem 1.5rem; border-radius: 20px; }
+    .hero-caption { display: none; }
+    .scroll-hint { display: none; }
+    .hero-dots { bottom: 1.25rem; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <span class="eyebrow">The inaugural collection</span>
-  <h1>Retro <span class="accent">Modernism</span> Art</h1>
-  <p class="tagline">Choose hope. Six original prints for the world we're living in — MCM soul, future-facing.</p>
-  <nav><a href="about.html">About the gallery</a></nav>
-</header>
+<section class="hero" aria-label="Featured artwork">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image: url('images/art-choose-connection.jpg')" data-title="Choose Connection"></div>
+    <div class="hero-slide" style="background-image: url('images/art-choose-presence.webp')" data-title="Choose Presence"></div>
+    <div class="hero-slide" style="background-image: url('images/art-choose-creativity.webp')" data-title="Choose Creativity"></div>
+    <div class="hero-slide" style="background-image: url('images/art-choose-humility.webp')" data-title="Choose Humility"></div>
+    <div class="hero-slide" style="background-image: url('images/art-choose-nature.webp')" data-title="Choose Nature"></div>
+    <div class="hero-slide" style="background-image: url('images/art-choose-real.webp')" data-title="Choose Real"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-card">
+    <span class="eyebrow">The inaugural collection</span>
+    <h1>Retro <span class="accent">Modernism</span> Art</h1>
+    <p class="tagline">Choose hope. Six original prints for the world we're living in.</p>
+    <div class="hero-cta">
+      <a href="#collection" class="hero-btn">Browse the collection</a>
+      <a href="about.html" class="hero-link">About the gallery</a>
+    </div>
+  </div>
+  <div class="hero-dots" role="tablist" aria-label="Artwork slides"></div>
+  <div class="hero-caption" id="hero-caption">Choose Connection</div>
+  <div class="scroll-hint">Scroll</div>
+</section>
 
 <div class="ship-banner"><span>FREE US SHIPPING on every order — no code needed</span></div>
 
@@ -574,7 +766,7 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
   Every print is made to order and shipped straight to your door.
 </p>
 
-<main class="grid">
+<main class="grid" id="collection">
 
   <article class="card">
     <div class="carousel">
@@ -782,6 +974,43 @@ src="https://www.facebook.com/tr?id=2527867230958419&ev=PageView&noscript=1"
   <p>&copy; 2026 Retro Modernism Art. All pieces original.</p>
 </footer>
 
+<script>
+// Hero slideshow: all 6 works crossfade with Ken Burns drift
+(function(){
+  var slides = document.querySelectorAll('.hero-slide');
+  var dotsWrap = document.querySelector('.hero-dots');
+  var caption = document.getElementById('hero-caption');
+  var i = 0, n = slides.length, timer = null;
+  var dots = [];
+  slides.forEach(function(s, k){
+    var d = document.createElement('button');
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-label', 'Show ' + (s.dataset.title || ('artwork ' + (k + 1))));
+    d.addEventListener('click', function(){ go(k); restart(); });
+    dotsWrap.appendChild(d);
+    dots.push(d);
+  });
+  function go(k){
+    i = (k + n) % n;
+    slides.forEach(function(s, j){
+      s.classList.remove('active');
+      if (j === i) { void s.offsetWidth; s.classList.add('active'); }
+    });
+    dots.forEach(function(d, j){ d.classList.toggle('active', j === i); });
+    if (caption) caption.textContent = slides[i].dataset.title || '';
+  }
+  function restart(){
+    if (timer) clearInterval(timer);
+    timer = setInterval(function(){ go(i + 1); }, 6000);
+  }
+  go(0);
+  restart();
+  // pause on hover for a closer look
+  var hero = document.querySelector('.hero');
+  hero.addEventListener('mouseenter', function(){ if (timer) clearInterval(timer); timer = null; });
+  hero.addEventListener('mouseleave', function(){ if (!timer) restart(); });
+})();
+</script>
 <script>
 // Card image carousels: room mockup <-> artwork only
 document.querySelectorAll('.card .carousel').forEach(function(car){
